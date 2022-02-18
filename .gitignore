@@ -1,0 +1,4 @@
+# Ignore Linux env folder.
+lenv/
+# Ignore Windows env folder.
+wenv/
