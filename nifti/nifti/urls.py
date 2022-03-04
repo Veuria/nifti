@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Import include function so that we can include urls defined in another app,
+# thus increasing modularity.
+from django.urls import include
+
+from home.views import home, about
 
 urlpatterns = [
+    path('', home, name='home-home'),
+    path('about', about, name='home-about'),
+    path('search/', include('search.urls')),
     path('admin/', admin.site.urls),
 ]
