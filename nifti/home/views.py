@@ -51,3 +51,15 @@ def about(request):
     'members': members
   }
   return render(request, 'home/about.html', context)
+
+def login(request):
+  context = {
+    'title': 'Login',
+  }
+  return render(request, 'home/login.html', context)
+
+def register(request):
+  context = {
+    'title': 'Register',
+  }
+  return render(request, 'home/register.html', context)

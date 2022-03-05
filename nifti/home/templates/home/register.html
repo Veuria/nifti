@@ -1,0 +1,46 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+  <div style="margin-bottom: 50%; margin-top: 3em;">
+    <form>
+      <div class="card text-black" style="width: 25rem; margin: auto; max-width: fit-content;">
+
+        <h5 class="card-header">Register</h5>
+
+        <!-- Display as grid so button takes entire width. -->
+        <div class="card-body d-grid">
+
+          <div class="mb-3">
+            <label for="inputUsername" class="form-label visually-hidden">Username</label>
+            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+          </div>
+
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label visually-hidden">Email</label>
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email" aria-describedby="emailHelp">
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPassword1" class="form-label visually-hidden">Password</label>
+            <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPassword2" class="form-label visually-hidden">Password Verification</label>
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Password Verification">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Register</button>
+
+        </div>
+
+      </div>
+    </form>
+
+    <div id="loginHelp" class="form-text">
+      Have an account?
+      <a href="{% url 'home-login' %}">Log In</a>
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,7 +1,10 @@
+{% comment %} Load static files such as css. {% endcomment %}
 {% load static %}
+
 <!doctype html>
-<!-- Class h-100 to make page take the entire height. -->
-<html lang="en" class="h-100">
+<!-- Class page take the entire height, or it will look ugly. -->
+<!-- Also, allow page height to go over 100% in case of overflow. -->
+<html lang="en" style="height:100%; min-height: 100%;">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -28,12 +31,14 @@
             <!-- Get the urls for each link in the nav bar. -->
             {% url 'home-home' as home %}
             {% url 'home-about' as about %}
+            {% url 'home-login' as login %}
+            {% url 'home-register' as register %}
 
-            <!-- Activate link in nav bar for the current page. -->
+            <!-- Activate link in nav bar and add aria current for the current page. -->
             <a class="nav-link{% if request.path == home %} active" aria-current="page" {% else %}"{% endif %} href="{{ home }}">Home</a>
             <a class="nav-link" href="#">Search</a>
-            <a class="nav-link" href="#">Login</a>
-            <a class="nav-link" href="#">Registration</a>
+            <a class="nav-link{% if request.path == login %} active" aria-current="page" {% else %}"{% endif %} href="{{ login }}">Login</a>
+            <a class="nav-link{% if request.path == register %} active" aria-current="page" {% else %}"{% endif %} href="{{ register }}">Register</a>
             <a class="nav-link{% if request.path == about %} active" aria-current="page" {% else %}"{% endif %} href="{{ about }}">About</a>
 
           </nav>
@@ -41,7 +46,7 @@
       </header>
 
       <main class="px-3">
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock content %}
       </main>
 
       <footer class="mt-auto text-white-50">

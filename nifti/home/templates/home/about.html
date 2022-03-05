@@ -1,21 +1,27 @@
 {% extends "home/base.html" %}
 {% block content %}
+
   <h1>Team Members</h1>
 
-  <div class="accordion accordion-flush bg-white" id="accordionFlushExample">
+  <div class="accordion accordion-flush" id="accordionFlushExample">
     {% for member in members %}
-    <div class="accordion-item bg-dark">
+
+    <div class="accordion-item bg-transparent">
+
       <h2 class="accordion-header" id="flush-heading-for-{{member.first}}">
-        <button class="accordion-button collapsed bg-dark text-white d-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-for-{{member.first}}" aria-expanded="false" aria-controls="flush-collapse-for-{{member.first}}">
+        <button class="accordion-button collapsed bg-transparent text-white d-block text-center" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-for-{{member.first}}" aria-expanded="false" aria-controls="flush-collapse-for-{{member.first}}">
           {{ member.first }} {{ member.middle }} {{ member.last }}
         </button>
       </h2>
+
       <div id="flush-collapse-for-{{member.first}}" class="accordion-collapse collapse" aria-labelledby="flush-heading-for-{{member.first}}" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
           {{ member.description|safe }}
       </div>
+
     </div>
+
   {% endfor %}
   </div>
 
-{% endblock %}
+{% endblock content %}

@@ -19,10 +19,12 @@ from django.urls import path
 # thus increasing modularity.
 from django.urls import include
 
-from home.views import home, about
+from home.views import home, login, register, about
 
 urlpatterns = [
     path('', home, name='home-home'),
+    path('login', login, name='home-login'),
+    path('register', register, name='home-register'),
     path('about', about, name='home-about'),
     path('search/', include('search.urls')),
     path('admin/', admin.site.urls),

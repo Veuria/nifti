@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+  <!-- Raise the login form so it is not exactly in the center of the page. -->
+  <div style="margin-bottom: 50%; margin-top: 3em;">
+    <form>
+
+      <div class="card text-black" style="width: 25rem; margin: auto; max-width: fit-content;">
+
+        <h5 class="card-header">Login</h5>
+
+        {% comment %} Display as grid so button takes entire width. {% endcomment %}
+        <div class="card-body d-grid">
+
+          <div class="mb-3">
+            <label for="inputEmail1" class="form-label visually-hidden">Email or username</label>
+            <input type="email" class="form-control" id="inputEmail1" placeholder="Email or username" aria-describedby="emailHelp">
+          </div>
+
+          <div class="mb-3">
+            <label for="inputPassword1" class="form-label visually-hidden">Password</label>
+            <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Log In</button>
+
+        </div>
+
+      </div>
+
+    </form>
+
+      <div id="registrationHelp" class="form-text">
+        Not registered?
+        <a href="{% url 'home-register' %}">Register</a>
+      </div>
+
+  </div>
+
+{% endblock content %}
