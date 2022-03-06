@@ -1,6 +1,0 @@
-# Ignore Linux env folder.
-lenv/
-# Ignore Windows env folder.
-wenv/
-# Ignore Python cache.
-__pycache__/
