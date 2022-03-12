@@ -31,9 +31,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
+# Application definition. Django can only read app templates and models for apps
+# in the installed apps list.
 
 INSTALLED_APPS = [
+    'search.apps.SearchConfig',
     'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
