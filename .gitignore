@@ -4,3 +4,5 @@ lenv/
 wenv/
 # Ignore Python cache.
 __pycache__/
+# Ignore static folder.
+nifti/static/
