@@ -16,12 +16,16 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'home/main.css' %}">
 
+    <!-- Page-specific CSS -->
+    {% block style %}
+    {% endblock style %}
+
     <title>{{ title }}</title>
   </head>
 
-  <body class="d-flex h-100 text-center text-white bg-dark">
+  <body class="d-flex text-center text-white bg-dark" style="min-height: 100%;">
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
 
       <header class="mb-auto">
         <div>
@@ -33,10 +37,11 @@
             {% url 'home-about' as about %}
             {% url 'home-login' as login %}
             {% url 'home-register' as register %}
+            {% url 'search-home' as search %}
 
             <!-- Activate link in nav bar and add aria current for the current page. -->
             <a class="nav-link{% if request.path == home %} active" aria-current="page" {% else %}"{% endif %} href="{{ home }}">Home</a>
-            <a class="nav-link" href="#">Search</a>
+            <a class="nav-link{% if request.path == search %} active aria-current="page" {% else %}"{% endif %} href="{{ search }}">Search</a>
             <a class="nav-link{% if request.path == login %} active" aria-current="page" {% else %}"{% endif %} href="{{ login }}">Login</a>
             <a class="nav-link{% if request.path == register %} active" aria-current="page" {% else %}"{% endif %} href="{{ register }}">Register</a>
             <a class="nav-link{% if request.path == about %} active" aria-current="page" {% else %}"{% endif %} href="{{ about }}">About</a>
