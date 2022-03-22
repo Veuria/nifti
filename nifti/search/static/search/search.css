@@ -1,0 +1,78 @@
+:root {
+  --main: white;
+}
+
+body {
+  background: #111 !important;
+}
+
+.card {
+  /* background: #222; */
+  background: transparent;
+  border: 1px solid white;
+  color: rgba(250, 250, 250, 0.8);
+  margin-bottom: 2rem;
+}
+
+.btn {
+  -webkit-text-fill-color: white !important;
+  border: 1px solid #fff !important;
+  box-shadow: #222 1px 0 10px;
+}
+
+.btn:hover, .btn:focus {
+  background: var(--main) !important;
+  -webkit-text-fill-color: black !important;
+  border: 1px solid #fff !important;
+  box-shadow: #222 1px 0 10px;
+}
+
+.row {
+  margin-left: 0;
+}
+
+.form-switch {
+  margin-right: 2em;
+}
+
+.responsive {
+  width: 100%;
+  /* height: 100%; */
+  height: 140px;
+  min-height: 100%;
+  object-fit: cover;
+
+  /* Make the left image borders round. */
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+
+  /* Make the right image borders flush. */
+  border-bottom-right-radius: 0rem;
+  border-top-right-radius: 0rem;
+}
+
+.search-options {
+  display: flex;
+}
+
+/* Adjust the top borders when the viewing the image in a smaller screen. */
+@media only screen and (max-width: 740px){
+  .responsive {
+    /* Make the top image borders round. */
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+
+    /* Make the bottom image borders flush. */
+    border-bottom-left-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+  }
+
+  /* Make the search options below each other on a smaller screen. */
+  .search-options {
+    display: block;
+    text-align: left;
+  }
+  .form-switch {
+    padding-top: 0.5em;
+  }
+}

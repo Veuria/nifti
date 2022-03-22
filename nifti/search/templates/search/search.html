@@ -1,0 +1,103 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'search/search.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+  <!-- Search form -->
+  <div class="container-fluid">
+
+    <form class="" style="width: 100%; padding: 1.4em; padding-bottom: 0;">
+
+      <!-- Search bar. -->
+      <div class="d-flex input-group">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+
+      <!-- Search bar options. -->
+      <div class="input-group form-check-inline mt-2 search-options">
+
+        {% with service='Service' task='Task' user='User' distance='Distance' %}
+          <!-- Service switch. -->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitch{{service}}">
+            <label class="form-check-label" for="flexSwitch{{service}}">{{service}}</label>
+          </div>
+
+          <!-- Task switch. -->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitch{{task}}" checked>
+            <label class="form-check-label" for="flexSwitch{{task}}">{{task}}</label>
+          </div>
+
+          <!-- User switch. -->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitc{{user}}" checked disabled>
+            <label class="form-check-label" for="flexSwitch{{user}}">{{user}}</label>
+          </div>
+
+          <!-- Distance switch. -->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitch{{distance}}" disabled>
+            <label class="form-check-label" for="flexSwitch{{distance}}">{{distance}}
+          </div>
+        {% endwith %}
+
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Search results. -->
+  <section class="bg-transparent text-black p-4 d-flex justify-content-center w-100">
+    <div class="container">
+      <div class="row">
+        
+        <!-- Iterate over every user in the results. -->
+        {% for user in users %}
+          {% with user.first|add:' '|add:user.last as username %}
+
+          <div class="card mb-3 text-start" style="max-width: 540px; text-shadow: none !important; padding: 0px !important; min-height: 140px">
+            <div class="row g-0" style="margin-left: 0 !important;">
+              <div class="col-md-4">
+                <img
+                  src="{{ user.image_url }}"
+                  alt="{{ username }}"
+                  class="img-fluid responsive"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Card title</h5> -->
+                  <h5 class="card-title">{{ username }}</h5>
+                  <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+
+                  <p class="card-text">
+                    <a href="{{ username }}" style="top: 0; left: 0; height: 100%; width: 100%; text-decoration: none; color: white;">
+                      {{ user.description|truncatechars:120|default:"Hello, I am new member. Come check my profile!" }}
+
+                       <!-- {{ user.description|truncatechars_html:15|safe }} -->
+                    </a>
+                  </p>
+
+                  <!-- <p class="card-text">
+                    <small class="text-muted">Last updated 5 mins ago</small>
+                  </p> -->
+                  <!-- <a href="#" class="btn  mr-2"><i class="fas fa-link"></i> Visit Profile</a> -->
+                  <!-- <a href="#" class="btn"><i class="fab fa-github"></i> Contact</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% endwith %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+
+{% endblock content %}
